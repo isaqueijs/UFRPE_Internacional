@@ -7,99 +7,60 @@ import {
     View,
     Text,
     StatusBar,
+    Dimensions,
+    Image
 } from 'react-native';
 
+import { dataList } from '../../assets/sites'
+// import { mdiAccount } from '@mdi/js';
+// import Icon from '@mdi/react'
 
-const dataList = [{
-    key: 1,
-    name: 'GOOGLE',
-    url: 'https://www.google.com/'
-}, {
+// import Icon from '../../components/icon'
 
-    key: 2,
-    name: 'NINTER',
-    url: 'http://international.ufrpe.br/'
-
-}, {
-
-    key: 3,
-    name: 'ACI',
-    url: 'http://www.aci.ufrpe.br/'
-
-}, {
-
-    key: 4,
-    name: 'Manual',
-    url: 'http://www.preg.ufrpe.br/br/manual-estudante'
-
-}]
-
+const icon = [
+    require('../../assets/intercambio.png'),
+    require('../../assets/ipe.png'),
+    require('../../assets/handshake.png'),
+    require('../../assets/book-open-variant2.png'),
+    require('../../assets/google.png'),
+    require('../../assets/phone-hangup.png'),
+]
+const WIDTH = Dimensions.get('window').width
 
 function HomeScreen({ navigation }) {
 
-    const [url, setUrl] = useState("");
+    function renderItem({ item }) {
 
-    const renderItem = ({ item }) => (
-        <TouchableOpacity style={styles.botao}
-            onPress={() => {
-                navigation.navigate('WebPage', item.url)
-            }}
-        >
-            <View>
-                <Text style={styles.texto}>{item.name}</Text>
-            </View>
-        </TouchableOpacity>
-    )
+        const icon_ = icon[item.key - 1];
+
+        return (
+            <TouchableOpacity style={styles.botao}
+                onPress={() => {
+                    navigation.navigate('WebPage', item.url)
+                }}
+            >
+                <View>
+                    <Image
+                        style={{ width: 100, height: 100, alignSelf: 'center' }}
+                        source={icon_}
+                    />
+                    <Text style={styles.texto}>{item.name}</Text>
+                </View>
+            </TouchableOpacity>
+        )
+    }
 
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar barStyle='dark-content' />
 
             <FlatList
+                style={{ marginTop: 20 }}
                 data={dataList}
+                numColumns={2}
                 renderItem={renderItem}
                 keyExtractor={item => item.key.toString()}
             />
-
-            {/* <TouchableOpacity style={styles.botao}
-                onPress={() => {
-                    navigation.navigate('WebPage', 'https://www.google.com/')
-                }}
-            >
-                <View>
-                    <Text style={styles.texto}>GOOGLE</Text>
-                </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.botao}
-                onPress={() => {
-                    navigation.navigate('WebPage', 'http://international.ufrpe.br/')
-                }}
-            >
-                <View>
-                    <Text style={styles.texto}>NINTER</Text>
-                </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.botao}
-                onPress={() => {
-                    navigation.navigate('WebPage', 'http://www.aci.ufrpe.br/')
-                }}
-            >
-                <View>
-                    <Text style={styles.texto}>ACI</Text>
-                </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.botao}
-                onPress={() => {
-                    navigation.navigate('WebPage', 'http://www.preg.ufrpe.br/br/manual-estudante')
-                }}
-            >
-                <View>
-                    <Text style={styles.texto}>Manual</Text>
-                </View>
-            </TouchableOpacity> */}
         </SafeAreaView>
     );
 }
@@ -109,15 +70,19 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        marginTop: 20
+        backgroundColor: '#594C6F'
     },
     botao: {
+        flex: 1,
         justifyContent: 'center',
         alignSelf: 'center',
-        backgroundColor: '#4555',
-        height: 100,
-        width: 100,
-        borderWidth: 2
+        backgroundColor: 'orange',
+        height: WIDTH / 2,
+        borderWidth: 2,
+        borderColor: 'black',
+        borderRadius: 50,
+        marginHorizontal: 5,
+        marginVertical: 5
     },
     texto: {
         alignSelf: 'center',
@@ -126,7 +91,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     item: {
-        backgroundColor: '#f9c2ff',
+        backgroundColor: '#FAFAFA',
         padding: 20,
         marginVertical: 8,
         marginHorizontal: 16,
