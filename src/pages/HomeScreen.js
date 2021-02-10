@@ -15,7 +15,6 @@ import { dataList } from '../../assets/sites'
 // import { mdiAccount } from '@mdi/js';
 // import Icon from '@mdi/react'
 
-// import Icon from '../../components/icon'
 
 const icon = [
     require('../../assets/intercambio.png'),
