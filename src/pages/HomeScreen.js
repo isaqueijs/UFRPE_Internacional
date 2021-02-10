@@ -12,16 +12,14 @@ import {
 } from 'react-native';
 
 import { dataList } from '../../assets/sites'
-// import { mdiAccount } from '@mdi/js';
-// import Icon from '@mdi/react'
 
 
 const icon = [
-    require('../../assets/intercambio.png'),
     require('../../assets/ipe.png'),
+    require('../../assets/intercambio.png'),
     require('../../assets/handshake.png'),
-    require('../../assets/book-open-variant2.png'),
-    require('../../assets/google.png'),
+    require('../../assets/book-open-variant.png'),
+    require('../../assets/editais.png'),
     require('../../assets/phone-hangup.png'),
 ]
 const WIDTH = Dimensions.get('window').width
@@ -51,7 +49,7 @@ function HomeScreen({ navigation }) {
 
     return (
         <SafeAreaView style={styles.container}>
-            <StatusBar barStyle='dark-content' />
+            <StatusBar barStyle='light-content' backgroundColor= '#594C6F'/>
 
             <FlatList
                 style={{ marginTop: 20 }}
@@ -75,7 +73,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignSelf: 'center',
-        backgroundColor: 'orange',
+        backgroundColor: '#FF8B7B',
         height: WIDTH / 2,
         borderWidth: 2,
         borderColor: 'black',
@@ -86,8 +84,8 @@ const styles = StyleSheet.create({
     texto: {
         alignSelf: 'center',
         justifyContent: 'center',
-        padding: 20,
-        fontWeight: 'bold'
+        paddingTop: 20,
+        fontWeight: 'bold',
     },
     item: {
         backgroundColor: '#FAFAFA',

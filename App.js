@@ -13,8 +13,36 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="e-NINTER" component={HomeScreen} />
-        <Stack.Screen name="WebPage" component={WebPage} />
+        <Stack.Screen
+          name="e-NINTER"
+          component={HomeScreen}
+          options={{
+            // headerStatusBarHeight: -10,
+            headerStyle: {
+              backgroundColor: '#594C6F',
+            },
+            headerTintColor: '#FFFFFF',
+            headerTitleAlign: 'center',
+            headerTitleStyle: {
+              fontWeight: 'bold'
+            }
+          }}
+        />
+        <Stack.Screen
+          name="WebPage"
+          component={WebPage}
+          options={{
+            // headerStatusBarHeight: -10,
+            headerStyle: {
+              backgroundColor: '#594C6F',
+            },
+            headerTintColor: '#FFFFFF',
+            headerTitleAlign: 'center',
+            headerTitleStyle: {
+              fontWeight: 'bold'
+            }
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
