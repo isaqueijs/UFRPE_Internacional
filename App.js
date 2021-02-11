@@ -17,7 +17,7 @@ function App() {
           name="e-NINTER"
           component={HomeScreen}
           options={{
-            // headerStatusBarHeight: -10,
+            headerStatusBarHeight: -10,
             headerStyle: {
               backgroundColor: '#594C6F',
             },
@@ -32,7 +32,8 @@ function App() {
           name="WebPage"
           component={WebPage}
           options={{
-            // headerStatusBarHeight: -10,
+            headerStatusBarHeight: -10,
+            title: '',
             headerStyle: {
               backgroundColor: '#594C6F',
             },
