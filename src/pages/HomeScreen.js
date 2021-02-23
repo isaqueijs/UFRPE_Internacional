@@ -49,7 +49,7 @@ function HomeScreen({ navigation }) {
 
     return (
         <SafeAreaView style={styles.container}>
-            <StatusBar barStyle='light-content' backgroundColor= '#594C6F'/>
+            <StatusBar barStyle='light-content' backgroundColor='#594C6F' />
 
             <FlatList
                 style={{ marginTop: 20 }}
@@ -86,12 +86,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingTop: 20,
         fontWeight: 'bold',
-    },
-    item: {
-        backgroundColor: '#FAFAFA',
-        padding: 20,
-        marginVertical: 8,
-        marginHorizontal: 16,
     }
 });
 
