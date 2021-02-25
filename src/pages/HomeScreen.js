@@ -21,6 +21,7 @@ const icon = [
     require('../../assets/book-open-variant.png'),
     require('../../assets/editais.png'),
     require('../../assets/phone-hangup.png'),
+    require('../../assets/telegram.png'),
 ]
 const WIDTH = Dimensions.get('window').width
 
@@ -29,6 +30,30 @@ function HomeScreen({ navigation }) {
     function renderItem({ item }) {
 
         const icon_ = icon[item.key - 1];
+
+        if ((dataList.length % 2 == 1) && (dataList.length == item.key)) {
+            return (
+                <>
+                    <TouchableOpacity style={styles.botao}
+                        onPress={() => {
+                            navigation.navigate('WebPage', item.url)
+                        }}
+                    >
+                        <View>
+                            <Image
+                                style={{ width: 100, height: 100, alignSelf: 'center' }}
+                                source={icon_}
+                            />
+                            <Text style={styles.texto}>{item.name}</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.itemInvisible}>
+
+                    </TouchableOpacity>
+                </>
+
+            )
+        }
 
         return (
             <TouchableOpacity style={styles.botao}
@@ -52,7 +77,6 @@ function HomeScreen({ navigation }) {
             <StatusBar barStyle='light-content' backgroundColor='#594C6F' />
 
             <FlatList
-                style={{ marginTop: 20 }}
                 data={dataList}
                 numColumns={2}
                 renderItem={renderItem}
@@ -66,6 +90,7 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
+        // height: "100%",
         justifyContent: 'center',
         backgroundColor: '#594C6F'
     },
@@ -74,7 +99,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignSelf: 'center',
         backgroundColor: '#FF8B7B',
-        height: WIDTH / 2,
+        height: (WIDTH / 2) - 5,
         borderWidth: 2,
         borderColor: 'black',
         borderRadius: 50,
@@ -86,6 +111,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingTop: 20,
         fontWeight: 'bold',
+    },
+    itemInvisible: {
+        flex: 1,
+        backgroundColor: 'transparent'
     }
 });
 
